@@ -1,0 +1,73 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <dt>title</dt>
+    <dd></dd>
+    <dt>link</dt>
+    <script>
+    var dd=document.querySelectorAll("dd");
+    var xhr=new XMLHttpRequest();
+    xhr.open("GET","https://cors-anywhere.herokuapp.com/https://time.com/",true);
+    xhr.responseType="document";
+    xhr.onload=function(){
+        if(xhr.readyState==4 && xhr.status==200)
+        {
+           var response=xhr.responseXML.querySelectorAll(".most-popular-feed__item-container li")
+           dd[0].innerText=response[1].children[1].textContent;
+        //    var response2=xhr.responseXML.querySelectorAll(".most-popular-feed__item-container li.most-popular-feed__item div a")
+
+           dd[1].innerText=response[2].children[2].querySelectorAll("li.most-popular-feed__item div a").textContent;
+        //    dd[2].innerText=response[3].children[3].textContent;
+
+        //    dd[3].innerText=response[4].children[4].textContent;
+
+           console.log(response);
+        }
+    };
+    xhr.onerror=function(){
+        console.log(xhr.status,shr.statusText);
+    }
+    xhr.send();
+    </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <dt>title</dt>
+    <dd></dd>
+    <dt>link</dt>
+    <script>
+   var dd=document.querySelectorAll("dd");
+    var xhr=new XMLHttpRequest();
+    xhr.open("GET","https://cors-anywhere.herokuapp.com/https://time.com/",true);
+    xhr.responseType="document";
+    xhr.onload=function(response){
+        if(xhr.readyState==4 && xhr.status==200)
+        {
+           var response=xhr.responseXML.querySelectorAll(".most-popular-feed__item-container li")
+           dd[0].outerText=response[1].find('li.most-popular-feed__item div a').url.split(' ');
+           dd[1].outerHTML=response[2].find('li.most-popular-feed__item h3').text();
+           console.log(response);
+        }
+    };
+    xhr.onerror=function(){
+        console.log(xhr.status,shr.statusText);
+    }
+    xhr.send();
+    </script>
+</body>
+</html>
